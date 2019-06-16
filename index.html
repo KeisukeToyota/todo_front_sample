@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8"> 
+    <title>ToDo List</title>
+  </head> 
+  
+  <body>
+    <h1>ToDo List</h1>
+    <div>
+      <input type="text" id="textbox" placeholder="Input here...">
+      <button id="submitButton" onclick="addTodo()">ADD</button>
+    </div>
+
+    <ul id="chat">
+    </ul>
+
+    <script>
+        const textbox = document.getElementById('textbox');
+        const chat = document.getElementById('chat');
+
+        function addTodo() {
+          if (textbox.value.length === 0) { return; }
+          
+          const li = document.createElement('li');
+          const button = document.createElement('button');
+
+          li.textContent = textbox.value;
+          button.textContent = "x";
+
+          button.onclick = function () {
+            this.parentElement.remove();
+          };
+
+          li.appendChild(button);
+          chat.appendChild(li);
+          textbox.value = "";
+        }
+    </script>
+  </body>
+</html>
